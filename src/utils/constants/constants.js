@@ -1,6 +1,6 @@
 const constantes = {
   vivaReal: { maxValorAluguel: 4000, maxValorVenda: 700000 },
-  zap: { minValorAluguel: 3500, minValorVenda: 600000, minUsableAreas: 3500 },
+  zap: { minValorAluguel: 3500, minValorVenda: 600000, minUsableArea: 3500 },
   boundingBoxZap: {
     minLon: -46.693419,
     minlat: -23.568704,

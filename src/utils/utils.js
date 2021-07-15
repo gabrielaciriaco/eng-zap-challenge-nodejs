@@ -32,3 +32,17 @@ export const validaParametrosQuery = [
   query("page").isInt({ min: 1 }).toInt(),
   query("itens").isInt({ min: 1 }).toInt(),
 ];
+
+export const respostaFormatada = (arrayImoveis, page, itens, totalItens) => ({
+  pageNumber: page,
+  pageSize: itens,
+  totalCount: totalItens,
+  listings: arrayImoveis,
+});
+
+export const verificaElegibilidadeGeral = (imovel) => {
+  const { lon: lonImovel, lat: latImovel } =
+    imovel.address.geoLocation.location;
+  const { usableAreas } = imovel;
+  return latImovel != 0 && lonImovel != 0 && usableAreas != 0;
+};
