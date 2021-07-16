@@ -8,6 +8,7 @@ const buscarImoveis = async () => {
     return imoveis.data;
   } catch (erro) {
     logErro(`Erro ao buscar imóveis: ${erro}`);
+    throw erro;
   }
 };
 
