@@ -1,8 +1,5 @@
 import { validationResult } from "express-validator";
 import boundingBoxZap from "./constants/boundingBox.js";
-import expressValidator from "express-validator";
-
-const { query } = expressValidator;
 
 export function logErro(mensagem) {
   const data = new Date().toISOString();
@@ -13,20 +10,19 @@ export function estaNaBoundingBox(imovel) {
   const { minLon, maxLon, minLat, maxLat } = boundingBoxZap;
   const { lon: lonImovel, lat: latImovel } =
     imovel.address.geoLocation.location;
-
-  if (
+  return (
     lonImovel >= minLon &&
     lonImovel <= maxLon &&
     latImovel >= minLat &&
-    latimovel <= maxLat
-  ) {
-    return true;
-  }
-  return false;
+    latImovel <= maxLat
+  );
 }
 
-export function paginacao(arrayImoveis, page, itens) {
-  return arrayImoveis.slice((page - 1) * itens, page * itens);
+export function paginacao(array, page, itens) {
+  if (page < 0 || itens < 0) {
+    throw "Parâmetros inválidos";
+  }
+  return array.slice((page - 1) * itens, page * itens);
 }
 
 export const respostaFormatada = (arrayImoveis, page, itens, totalItens) => ({

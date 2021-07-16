@@ -14,7 +14,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest",
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
