@@ -4,16 +4,16 @@ import {
   verificaRequisitosVendaZap,
   verificaRequisitosAluguelZap,
 } from "../../services/zapService";
-import mocks, { imoveisZapServiceMock } from "./zapService.mock.js";
+import mocks, { imoveisZapServiceMock } from "./mocks/zapService.mock.js";
 import singleton from "../../services/imoveisSingleton.js";
 import axios from "axios";
 
 describe("Testando função verificaRequisitosAluguelZap", () => {
-  it("Recebendo imóvel elegível", () => {
+  it("Recebendo imóvel elegível, retorna true", () => {
     const resposta = verificaRequisitosAluguelZap(mocks.imovelElegivelAluguel);
     expect(resposta).toBeTruthy();
   });
-  it("Recebendo imóvel inelegível", () => {
+  it("Recebendo imóvel inelegível, retorna false", () => {
     const resposta = verificaRequisitosAluguelZap(
       mocks.imovelInelegivelAluguel
     );

@@ -13,12 +13,12 @@ describe("Teste do singleton de imóveis", () => {
   afterAll(() => {
     axios.get = realAxiosGet;
   });
-  it("Testa o recebimento da instância do Singleton", async () => {
+  it("Carrega imóveis e salva informação no objeto de imóveis", async () => {
     await imoveisSingleton.carregarImoveis();
     expect(imoveisSingleton.imoveis).toEqual("data");
   });
 
-  it("Testa se a instância permanece com os dados salvos sem a necessidade de outra chamada", () => {
+  it("Retorna o array de imóveis preenchido sem necessidade de outra chamada a função", () => {
     expect(imoveisSingleton.imoveis).toEqual("data");
   });
 });

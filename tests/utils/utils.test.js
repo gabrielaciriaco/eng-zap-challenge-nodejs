@@ -1,7 +1,7 @@
 import { beforeAll, expect, it, jest } from "@jest/globals";
 import * as utils from "../../utils/utils.js";
 import { query } from "express-validator";
-import mocks from "./utils.mock.js";
+import mocks from "./mocks/utils.mock.js";
 
 describe("Teste logErro", () => {
   const toISOString = jest.fn(() => "2021-01-19T10:20:29Z");
@@ -134,13 +134,14 @@ describe("Teste da função valida", () => {
   ];
   const next = jest.fn();
   describe("Quando a validação retorna erro", () => {
-    const mockReq = { query: { page: 0, itens: 2 } };
-    it("Gera erro com código 400", () =>
-      utils
+    it("Gera erro com código 400", () => {
+      const mockReq = { query: { page: 0, itens: 2 } };
+      return utils
         .valida(mockValidacoes)(mockReq, mockRes, next)
         .then(() => {
           expect(mockRes.status).toBeCalledWith(400);
-        }));
+        });
+    });
   });
   describe("Quando a validação retorna sucesso", () => {
     const mockReq = { query: { page: 1, itens: 2 } };
@@ -150,5 +151,22 @@ describe("Teste da função valida", () => {
         .then(() => {
           expect(next).toBeCalledTimes(1);
         }));
+  });
+  describe("Quando uma exceção é lançada durante a execução", () => {
+    it("Gera erro com código 500", () => {
+      const mockValidacoesErro = [
+        {
+          run: () => {
+            throw "erro";
+          },
+        },
+      ];
+      const mockReq = { query: { page: 1, itens: 2 } };
+      return utils
+        .valida(mockValidacoesErro)(mockReq, mockRes, next)
+        .then(() => {
+          expect(mockRes.status).toBeCalledWith(500);
+        });
+    });
   });
 });

@@ -4,16 +4,18 @@ import {
   verificaRequisitosVendaVivaReal,
   verificaRequisitosAluguelVivaReal,
 } from "../../services/vivaRealService.js";
-import mocks, { imoveisVivaRealServiceMock } from "./vivaRealService.mock.js";
+import mocks, {
+  imoveisVivaRealServiceMock,
+} from "./mocks/vivaRealService.mock.js";
 import singleton from "../../services/imoveisSingleton.js";
 import axios from "axios";
 
 describe("Testando função verificaRequisitosVendaVivaReal", () => {
-  it("Recebendo imóvel elegível", () => {
+  it("Recebendo imóvel elegível, retorna true", () => {
     const resposta = verificaRequisitosVendaVivaReal(mocks.imovelElegivelVenda);
     expect(resposta).toBeTruthy();
   });
-  it("Recebendo imóvel inelegível", () => {
+  it("Recebendo imóvel inelegível, retorna false", () => {
     const resposta = verificaRequisitosVendaVivaReal(
       mocks.imovelInelegivelVenda
     );
