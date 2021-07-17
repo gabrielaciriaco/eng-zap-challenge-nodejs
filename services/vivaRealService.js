@@ -11,9 +11,7 @@ const imoveisSingleton = new singleton().getInstance();
 
 export const buscarImoveisVivaRealService = (page, itens) => {
   const imoveis = imoveisSingleton.imoveis;
-  const vivaRealImoveis = imoveis.filter((imovel) => {
-    return verificaElegibilidadeImovelVivaReal(imovel);
-  });
+  const vivaRealImoveis = imoveis.filter(verificaElegibilidadeImovelVivaReal);
 
   const arrayPaginado = paginacao(vivaRealImoveis, page, itens);
   const response = respostaFormatada(
@@ -25,10 +23,10 @@ export const buscarImoveisVivaRealService = (page, itens) => {
   return response;
 };
 
-const verificaRequisitosVendaVivaReal = ({ pricingInfos }) =>
+export const verificaRequisitosVendaVivaReal = ({ pricingInfos }) =>
   Number(pricingInfos.price) <= vivaReal.maxValorVenda;
 
-const verificaRequisitosAluguelVivaReal = (imovel) => {
+export const verificaRequisitosAluguelVivaReal = (imovel) => {
   const { price, monthlyCondoFee } = imovel.pricingInfos;
   const { maxValorAluguel } = vivaReal;
   const porcentagemCondominioElegivel = monthlyCondoFee <= 0.3 * price;

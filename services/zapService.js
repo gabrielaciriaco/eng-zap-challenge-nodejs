@@ -12,9 +12,7 @@ const imoveisSingleton = new singleton().getInstance();
 
 export const buscarImoveisZapService = (page, itens) => {
   const imoveis = imoveisSingleton.imoveis;
-  const zapImoveis = imoveis.filter((imovel) => {
-    return verificaElegibilidadeImovelZap(imovel);
-  });
+  const zapImoveis = imoveis.filter(verificaElegibilidadeImovelZap);
 
   const arrayPaginado = paginacao(zapImoveis, page, itens);
   const response = respostaFormatada(
@@ -26,7 +24,7 @@ export const buscarImoveisZapService = (page, itens) => {
   return response;
 };
 
-const verificaRequisitosVendaZap = (imovel) => {
+export const verificaRequisitosVendaZap = (imovel) => {
   const { usableAreas } = imovel;
   const { price } = imovel.pricingInfos;
   const { minUsableArea, minValorVenda } = zap;
@@ -37,7 +35,7 @@ const verificaRequisitosVendaZap = (imovel) => {
   return price >= minValorVenda && elegibilidadeValorMetroQuadrado;
 };
 
-const verificaRequisitosAluguelZap = ({ pricingInfos }) =>
+export const verificaRequisitosAluguelZap = ({ pricingInfos }) =>
   Number(pricingInfos.price) >= zap.minValorAluguel;
 
 const verificadorBusinessType = {
