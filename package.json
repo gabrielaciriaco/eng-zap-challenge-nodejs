@@ -2,7 +2,7 @@
   "name": "eng-zap-challenge-nodejs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "dependencies": {
     "axios": "^0.21.1",
@@ -16,8 +16,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest",
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC"
