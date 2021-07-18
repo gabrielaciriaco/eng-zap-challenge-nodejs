@@ -1,12 +1,12 @@
 # Eng Zap Challenge - Nodejs - Gabriela Ciríaco
 
 ## Sumário
-- [Descrição](#descricao)
+- [Descrição](#descrição)
 - [Desafios enfrentados](#desafios-enfrentados)
-- [Instruções de execução](#instrucoes-de-execucao)
-- [Instruções de teste](#instrucoes-de-teste)
-- [Instruções de deploy](#instrucoes-de-deploy)
-- [Estrutura do código](#estrutura-do-codigo)
+- [Instruções de execução](#instruções-de-execução)
+- [Instruções de teste](#instruções-de-teste)
+- [Instruções de deploy](#instruções-de-deploy)
+- [Estrutura do código](#estrutura-do-código)
 
 ## Descrição
 
