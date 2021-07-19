@@ -42,3 +42,43 @@ O repositório do projeto está conectado ao [Heroku](https://www.heroku.com/), 
 <br>
 A API publicada no heroku se encontra no endereço: https://eng-zap-challenge-nodejs.herokuapp.com/api/v1/
 
+## Estrutura do código
+
+O projeto foi estruturado seguindo a seguinte organização:
+<br>
+<br>
+![image](https://user-images.githubusercontent.com/54192780/126086204-7bb83e72-a479-46ae-8924-6e0507ae3eb9.png)
+
+### Config
+
+Nesta pasta estão as configurações gerais do projeto. Temos o arquivo config.js que contem a url do endpoint acessado e a porta do servidor e também o arquivo routes que contém as rotas da aplicação e a chamada aos seus respectivos controllers.
+
+### Controllers
+
+Nesta pasta estão localizados os controllers da aplicação. Temos os arquivos zapController.js e vivaRealController.js que tratam as requisições das rotas `ap1/v1/zap/imoveis` e `api/v1/imoveis/viva_real`, respectivamente.
+
+### Repositories
+
+Nesta pasta está localizado o repositório de imóveis, que é o arquivo responsável por realizar a requisição ao endpoint fornecido.
+
+### Services 
+
+Nesta pasta estão localizados os services da aplicação e também o Singleton de imóveis. Cada service é responsável por tratar as regras de negócio das suas respectivas rotas e o Singleton tem como função garantir que a chamada ao endpoint fornecido seja realizado uma única vez em toda a aplicação.
+
+### Tests
+
+Nesta pasta estão localizados os testes unitários do sistema, ela está dividida em subpastas cada uma com seus respectivos testes. Temos os testes dos arquivos da pasta utils, services e controllers.
+
+### Utils
+
+Nesta pasta estão localizados algumas constantes e funções que podem ser utilizadas em diversos pontos da aplicação. 
+
+### Validators
+
+Nesta pasta está localizado o arquivo que contém o array de validação de parâmetros das requisições que verifica se eles vieram no formato correto.
+<br>
+<br>
+<br>
+Nota: O arquivo `server.js` encontra-se na raíz do projeto e é usado para inicializar o servidor node.
+
+
